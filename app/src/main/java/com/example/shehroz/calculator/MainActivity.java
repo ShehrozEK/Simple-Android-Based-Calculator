@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button btnAdd,btnSub,btnMul,btnDiv,btnEql,btnClr,button0 , button1 , button2 , button3 , button4 , button5 , button6 ,
-    button7 , button8 , button9;
+            button7 , button8 , button9;
     EditText editText1;
     public int num1 ,num2;
     boolean add,mul,div,sub;
@@ -55,54 +55,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        String number = editText1.getText().toString();
         switch (view.getId()){
             case R.id.button0:
-                editText1.setText(editText1.getText()+"0");
+                editText1.setText(number+"0");
 
                 break;
             case R.id.button1:
-                editText1.setText(editText1.getText()+"1");
+                editText1.setText(number+"1");
 
                 break;
             case R.id.button2:
-                editText1.setText(editText1.getText()+"2");
+                editText1.setText(number+"2");
 
                 break;
             case R.id.button3:
-                editText1.setText(editText1.getText()+"3");
+                editText1.setText(number+"3");
 
                 break;
             case R.id.button4:
-                editText1.setText(editText1.getText()+"4");
+                editText1.setText(number+"4");
 
                 break;
             case R.id.button5:
-                editText1.setText(editText1.getText()+"5");
+                editText1.setText(number+"5");
 
                 break;
             case R.id.button6:
-                editText1.setText(editText1.getText()+"6");
+                editText1.setText(number+"6");
 
                 break;
             case R.id.button7:
-                editText1.setText("7"+editText1.getText());
+                editText1.setText(number+"7");
 
                 break;
             case R.id.button8:
-                editText1.setText(editText1.getText()+"8");
+                editText1.setText(number+"8");
 
                 break;
             case R.id.button9:
-                editText1.setText(editText1.getText()+"9");
+                editText1.setText(number+"9");
 
                 break;
             case R.id.btnAdd:
-                num1=Integer.parseInt(editText1.getText().toString());
+                num1=Integer.parseInt(number.isEmpty()?"0":number);
                 add=true;
                 editText1.setText("");
                 break;
             case R.id.btnSub:
-                num1=Integer.parseInt(editText1.getText().toString());
+                num1=Integer.parseInt(number.isEmpty()?"0":number);
 
                 sub=true;
 
@@ -110,13 +111,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.btnMul:
-                num1=Integer.parseInt(editText1.getText().toString());
+                num1=Integer.parseInt(number.isEmpty()?"1":number);
                 mul=true;
                 editText1.setText("");
 
                 break;
             case R.id.btnDiv:
-                num1=Integer.parseInt(editText1.getText().toString());
+                num1=Integer.parseInt(number.isEmpty()?"1":number);
                 div=true;
                 editText1.setText("");
                 break;
@@ -125,30 +126,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.equal:
                 if(add){
-                    num2=Integer.parseInt(editText1.getText().toString());
+                    num2=Integer.parseInt(number.isEmpty()?"0":number);
                     editText1.setText("");
-//                    num2=Integer.parseInt(editText1.getText()+"");
+//                    num2=Integer.parseInt(number+"");
                     int num3;
                     num3=num1+num2;
                     editText1.setText(String.valueOf(num3));
                     add=false;
                 }
                 else if(sub){
-                    num2=Integer.valueOf(editText1.getText().toString());
-                   // num2=Integer.parseInt(editText1.getText()+"");
+                    num2=Integer.parseInt(number.isEmpty()?"0":number);
+                    // num2=Integer.parseInt(number+"");
                     editText1.setText(String.valueOf(num1-num2));
                     sub=false;
                 }
                 else if(mul){
-                    num2=Integer.valueOf(editText1.getText().toString());
-                   // num2=Integer.parseInt(editText1.getText()+"");
+                    num2=Integer.parseInt(number.isEmpty()?"1":number);
+                    // num2=Integer.parseInt(number+"");
                     editText1.setText(String.valueOf(num1*num2));
                     mul=false;
                 }
 
                 else if(div){
-                    num2=Integer.valueOf(editText1.getText().toString());
-                   // num2=Integer.parseInt(editText1.getText()+"");
+                    num2=Integer.parseInt(number.isEmpty()||number.equals("0")?"1":number);
+
+                    // num2=Integer.parseInt(number+"");
                     editText1.setText(String.valueOf(num1/num2));
                     div=false;
                 }
