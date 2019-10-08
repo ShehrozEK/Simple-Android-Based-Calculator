@@ -1,4 +1,4 @@
-This is a simple calculator application for Android.
+This is a simple Android calculator application.
 
 
 What I Learned
